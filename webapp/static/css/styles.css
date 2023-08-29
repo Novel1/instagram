@@ -1,0 +1,91 @@
+* {
+    font-family: cursive;
+}
+
+.container {
+    margin-top: 100px;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.card-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 0;
+}
+
+.tn {
+    border-radius: 5px;
+}
+
+.btn + .btn {
+    margin-left: 10px;
+}
+
+.btn-light {
+    color: #3498db;
+    background-color: transparent;
+    border-color: #3498db;
+}
+
+.btn-light:hover {
+    color: #fff;
+    background-color: #3498db;
+    border-color: #3498db;
+}
+
+/*Registration*/
+
+.registration-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.registration-container .form-group {
+    margin-bottom: 20px;
+}
+
+.registration-container .form-control {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    transition: border-color 0.2s;
+}
+
+.registration-container .form-control:focus {
+    outline: none;
+    border-color: #4cb6f9;
+}
+
+.registration-container .btn {
+    background-color: #4cb6f9;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.registration-container .btn:hover {
+    background-color: #3a9ad9;
+}
+
+.registration-container label {
+    display: none;
+}
+
