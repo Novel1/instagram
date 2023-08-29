@@ -1,0 +1,56 @@
+{#{% extends 'base.html' %}#}
+{#{% block content %}#}
+{#<div class="posts">#}
+{#    <div class="card mb-5 post">#}
+{#        <div class="d-flex post_detail_heading">#}
+{#            <a href="{% url 'profile' post.user.pk %}">#}
+{#                {% if post.user.avatar %}#}
+{#                <img src="{{ post.user.avatar.url }}" alt="avatar" class="rounded-circle border border-light"#}
+{#                     width="50" height="50">#}
+{#                {% else %}#}
+{#                <img src="../../static/media/no_image.jpg" alt="avatar" class="rounded-circle border border-light"#}
+{#                     width="50" height="50">#}
+{#                {% endif %}#}
+{#            </a>#}
+{#            <h6 class="ps-3 post_detail_heading_username">{{ post.user.username }}</h6>#}
+{#        </div>#}
+{#        <a href="{% url 'post_detail' post.pk %}" class="border border-light">#}
+{#            <img src="{{ post.image.url }}" alt="image" class="card-img-top">#}
+{#        </a>#}
+{#        <div class="card-body">#}
+{#            <form method="post" action="{% url 'like' post.pk %}" class="card_body_form">#}
+{#                {% csrf_token %}#}
+{#                <button type="submit" class="form_button" id="like-unlike-btn">#}
+{#                    {% if request.user.id in post_likes %}#}
+{##}
+{#                    {% else %}#}
+{##}
+{#                    {% endif %}#}
+{#                </button>#}
+{#            </form>#}
+{#            <a href="#comment-form-{{ post.pk }}" class="card_body_form">#}
+{#                <img src="../../static/media/comment.jpg" alt="comment" class="form_image">#}
+{#            </a>#}
+{#            <p><b><span id="likes_count" class="likes_count">{{ post.likes_count }}</span> отметок "Нравится"</b></p>#}
+{#            <p class="card-text">#}
+{#                <b>{{ post.user.name }}</b> {{ post.description }}#}
+{#            </p>#}
+{#            <p class="post_detail_created_at">{{ post.created_at }}</p>#}
+{#        </div>#}
+{#        <form method="post" action="{% url 'comment_add' post.pk %}" class="comment_form"#}
+{#              id="comment-form-{{ post.pk }}">#}
+{#            {% csrf_token %}#}
+{#            {{ form.as_p }}#}
+{#        </form>#}
+{#    </div>#}
+{#    <h3 class="pb-3">Комментарии:</h3>#}
+{#    <div class="post_comments border border-light p-3">#}
+{#        {% for comment in post.comments.all %}#}
+{#        <p><b>{{ comment.user.username }}</b> {{ comment.text }}</p>#}
+{#        <p class="post_detail_created_at">{{ comment.created_at }}</p>#}
+{#        {% empty %}#}
+{#        <p>Комментарии не добавлены.</p>#}
+{#        {% endfor %}#}
+{#    </div>#}
+{#</div>#}
+{#{% endblock %}#}

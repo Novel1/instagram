@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
+    <div class="registration-container">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-6">
+                    {% for field in form.visible_fields|slice:":6" %}
+                        <div class="form-group">
+                            {% bootstrap_field field layout='horizontal' %}
+                        </div>
+                    {% endfor %}
+                </div>
+               <div class="col-md-6">
+    {% for field in form.visible_fields|slice:"6:" %}
+        <div class="form-group">
+            {% if field.name == 'phone' %}
+                <label for="{{ field.id_for_label }}">Phone</label>
+                <input type="number" class="form-control" id="{{ field.id_for_label }}" name="{{ field.html_name }}" required>
+            {% elif field.name == 'language' %}
+                <label for="{{ field.id_for_label }}">Language</label>
+                <input type="text" class="form-control typeahead" id="{{ field.id_for_label }}" name="{{ field.html_name }}" required>
+            {% else %}
+                {% bootstrap_field field layout='horizontal' %}
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+
+            </div>
+            <div class="d-grid gap-2">
+                {% bootstrap_button button_type='submit' style="background-color: #4cb6f9; width: 380px" content='Sign Up' %}
+            </div>
+        </form>
+    </div>
+    <script>
+        // Инициализация intl-tel-input
+        var input = document.querySelector("#id_phone");
+        var iti = window.intlTelInput(input, {
+            initialCountry: "auto",
+            separateDialCode: true,
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/js/utils.js"
+        });
+    </script>
+    <script>
+        // Инициализация Typeahead.js на поле языка
+        var languages = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.whitespace,
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            local: [
+                "English", "Spanish", "French", "German", "Russian", "Казахстан", "Kazakhstan"
+            ]
+        });
+
+        $('#id_language').typeahead({
+            hint: true,
+            highlight: true,
+            minLength: 1
+        }, {
+            name: 'languages',
+            source: languages
+        });
+    </script>
+{% endblock %}
